@@ -50,7 +50,7 @@ export default function AdminPage() {
   /* ── Full-screen themed loader ── */
   if (loading) {
     return (
-      <main className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center">
+      <main className="relative h-screen w-screen overflow-hidden flex flex-col items-center justify-center">
         {/* Background */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -89,7 +89,7 @@ export default function AdminPage() {
 
   /* ── Authenticated → Dashboard ── */
   return (
-    <main className="relative min-h-screen overflow-hidden">
+    <main className="relative h-screen w-screen overflow-hidden flex flex-col">
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -110,66 +110,8 @@ export default function AdminPage() {
       {/* Top accent */}
       <div className="absolute top-0 left-0 right-0 h-[2px] z-20 bg-gradient-to-r from-transparent via-blue-600 to-transparent" />
 
-      {/* Top nav bar */}
-      <header className="relative z-10 border-b border-[#1e3a5f] bg-[#050d1a]/80 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-          {/* Left: branding */}
-          <div className="flex items-center gap-3">
-            <div
-              className="flex h-8 w-8 items-center justify-center border border-blue-700/50"
-              style={{
-                borderRadius: "3px",
-                background: "rgba(37,99,235,0.08)",
-              }}
-            >
-              <svg
-                viewBox="0 0 24 24"
-                className="w-4 h-4 text-blue-400"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.5}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
-                />
-              </svg>
-            </div>
-            <div>
-              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-400 leading-none">
-                Electoral Commission
-              </p>
-              <p className="text-[9px] uppercase tracking-[0.15em] text-white/25 leading-none mt-0.5">
-                Admin Dashboard
-              </p>
-            </div>
-          </div>
-
-          {/* Right: status badges */}
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-red-500" />
-              </span>
-              <span className="text-[9px] font-black uppercase tracking-[0.2em] text-red-400">
-                Live Election
-              </span>
-            </div>
-            <div className="h-3 w-px bg-white/10" />
-            <div className="flex items-center gap-1.5">
-              <div className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse" />
-              <span className="text-[9px] uppercase tracking-[0.15em] text-blue-400">
-                Authenticated
-              </span>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Dashboard content */}
-      <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      {/* Dashboard content — fills remaining height, no scroll */}
+      <section className="relative z-10 flex-1 min-h-0 flex flex-col w-full max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
         <DashboardStats initialData={dashboardData} />
       </section>
     </main>
